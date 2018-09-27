@@ -1,5 +1,6 @@
 #include "applicationTask.h"
 
+int a;
 
 const char *taskSocket = "taskSocket";
 osThreadId taskSocketHandle;
@@ -14,81 +15,36 @@ void creatOsTask(void)
 //	taskSocketHandle = osThreadCreate(osThread(taskSocket),NULL);
 }
 
-void vTaskSocket(void const *argument)
-{
-	struct netconn *conn,*newconn;
-	
-	
-	
-//	conn = netconn_new(NETCONN_TCP);
-//	netconn_bind(conn,IP_ADDR_ANY,50070);
-//	netconn_listen(conn);
-//	conn->recv_timeout = 10;
-
-//	int sock,size,newconn;
-//	struct sockaddr_in address,remotehost;
-//	char recv_buffer[10];
-//	/* create a TCP socket */
-//	sock = lwip_socket(AF_INET,SOCK_STREAM,0);
-//	if(sock<0)
-//	{
-//		printf("socket Create Failed\n");
-//		return;
-//	}
-//	
-//	/* bind to port 80 at any interface */
-//	address.sin_family = AF_INET;
-//	address.sin_port = htons(50007);
-//	address.sin_addr.s_addr = INADDR_ANY;
-//	if (bind(sock, (struct sockaddr *)&address, sizeof (address)) < 0)
-//	{
-//		printf("Bind Failed\n");
-//		close(sock);
-//		return;
-//	}
-//	
-//	/* listen for connections (TCP listen backlog = 1) */
-//  lwip_listen(sock, 1); 
-//  size = sizeof(remotehost);
-
-	
-	for(;;)
-	{
-//		newconn = lwip_accept(sock, (struct sockaddr *)&remotehost, (socklen_t *)&size);
-//		read(newconn, recv_buffer, sizeof(recv_buffer));
-//		printf("%s",recv_buffer);
-		printf("OK");
-		osDelay(500);
-	}
-}
-  err_t err;
-
 void tcpecho_thread(void *arg)
 {
-  ip_addr_t serverIpAddr;
+	//------parameter define-----//
+  ip_addr_t serverIpAddr,clientIpAddr;
   struct netconn *conn,*newconn;
   struct netbuf *buf;
   void *data;
-  u16_t len;
+  u16_t len,clientPort;
+  err_t err;
 
-  IP4_ADDR(&serverIpAddr,192,168,0,2);// ???IP??
-      
+	//------IPv4 address defined--//
+  IP4_ADDR(&serverIpAddr,192,168,0,2);//
   LWIP_UNUSED_ARG(arg);
-	
-	printf(":192,168,0,2 :65000...\r\n");
 	osDelay(10);
 	
-	/* Create a new connection identifier. */
+	//------Create a new netconn--//
 	conn = netconn_new(NETCONN_TCP);
+	
+	//------Bind IP address and port---//
 	conn->recv_timeout = 10;
-	err = netconn_bind(conn,IP_ADDR_ANY,50070);  //???? 8088???
+	err = netconn_bind(conn,IP_ADDR_ANY,50070);  
 	if(err == ERR_OK)
 		printf("BindOK\r\n");
 	
+	//------Listen the netconn----//
 	err = netconn_listen(conn);
 	printf("ListenOK\r\n");  
 	for( ;; )
 	{
+		//-----Wait for the client connect--//
 		err = netconn_accept(conn,&newconn);
 		newconn->recv_timeout = 10;
 		if(err == ERR_OK)
@@ -96,7 +52,17 @@ void tcpecho_thread(void *arg)
 			printf("connectOK\r\n");
 			for(;;)
 			{
-				osDelay(10);
+				netconn_getaddr(newconn,&clientIpAddr,&clientPort,0); 
+				uint8_t remot_addr[4];
+				remot_addr[3] = (uint8_t)(clientIpAddr.addr >> 24); 
+				remot_addr[2] = (uint8_t)(clientIpAddr.addr >> 16);
+				remot_addr[1] = (uint8_t)(clientIpAddr.addr >> 8);
+				remot_addr[0] = (uint8_t)(clientIpAddr.addr);
+				printf("IP:%d.%d.%d.%d,Port:%d\r\n",\
+				remot_addr[0], remot_addr[1],remot_addr[2],remot_addr[3],clientPort);
+				osDelay(5);
+				for(;;);
+				
 			}
 
 			netconn_close(conn);

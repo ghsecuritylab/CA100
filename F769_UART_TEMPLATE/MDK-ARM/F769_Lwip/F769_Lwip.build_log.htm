@@ -21,30 +21,26 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TCM.DLL V1.27.0.0
  
 <h2>Project:</h2>
-D:\project\STM32CUBE\F769_03_LwIP\F769_UART_TEMPLATE\MDK-ARM\F769_Lwip.uvprojx
-Project File Date:  09/24/2018
+E:\01.repository\03.CA100\F769_UART_TEMPLATE\MDK-ARM\F769_Lwip.uvprojx
+Project File Date:  09/27/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'F769_Lwip'
 compiling applicationTask.c...
-..\ApplicationTask\applicationTask.c(19): warning:  #177-D: variable "conn"  was declared but never referenced
-  	struct netconn *conn,*newconn;
-..\ApplicationTask\applicationTask.c(19): warning:  #177-D: variable "newconn"  was declared but never referenced
-  	struct netconn *conn,*newconn;
-..\ApplicationTask\applicationTask.c(102): warning:  #111-D: statement is unreachable
+..\ApplicationTask\applicationTask.c(68): warning:  #111-D: statement is unreachable
   			netconn_close(conn);
-..\ApplicationTask\applicationTask.c(70): warning:  #177-D: variable "buf"  was declared but never referenced
+..\ApplicationTask\applicationTask.c(23): warning:  #177-D: variable "buf"  was declared but never referenced
     struct netbuf *buf;
-..\ApplicationTask\applicationTask.c(71): warning:  #177-D: variable "data"  was declared but never referenced
+..\ApplicationTask\applicationTask.c(24): warning:  #177-D: variable "data"  was declared but never referenced
     void *data;
-..\ApplicationTask\applicationTask.c(72): warning:  #177-D: variable "len"  was declared but never referenced
-    u16_t len;
-..\ApplicationTask\applicationTask.c: 6 warnings, 0 errors
+..\ApplicationTask\applicationTask.c(25): warning:  #177-D: variable "len"  was declared but never referenced
+    u16_t len,clientPort;
+..\ApplicationTask\applicationTask.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=58312 RO-data=1260 RW-data=360 ZI-data=101800  
+Program Size: Code=58876 RO-data=1260 RW-data=356 ZI-data=101796  
 FromELF: creating hex file...
-"F769_Lwip\F769_Lwip.axf" - 0 Error(s), 6 Warning(s).
+"F769_Lwip\F769_Lwip.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -62,7 +58,7 @@ Package Vendor: ARM
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.2
-Build Time Elapsed:  00:00:12
+Build Time Elapsed:  00:00:13
 </pre>
 </body>
 </html>
