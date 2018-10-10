@@ -89,13 +89,13 @@ void tcpecho_thread(void *arg)
 					printf("%s\r\n",tcp_server_recvbuf);  //????????????
 					netbuf_delete(recvbuf);
 				}
-//				else if(recv_err == ERR_CLSD)  //????
-//				{
-//						netconn_close(newconn);
-//						netconn_delete(newconn);
-//						printf("master:%d.%d.%d.%d  is breaked\r\n",remot_addr[0], remot_addr[1],remot_addr[2],remot_addr[3]);
-//						break;
-//				}
+				else if(recv_err == ERR_CLSD)  //????
+				{
+						netconn_close(newconn);
+						netconn_delete(newconn);
+						printf("master:%d.%d.%d.%d  is breaked\r\n",remot_addr[0], remot_addr[1],remot_addr[2],remot_addr[3]);
+						break;
+				}
 			}
 			
 		}				
