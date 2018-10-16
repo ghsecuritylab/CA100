@@ -91,22 +91,14 @@
 #define LWIP_ETHERNET 1
 /*----- Value in opt.h for LWIP_DNS_SECURE: (LWIP_DNS_SECURE_RAND_XID | LWIP_DNS_SECURE_NO_MULTIPLE_OUTSTANDING | LWIP_DNS_SECURE_RAND_SRC_PORT) -*/
 #define LWIP_DNS_SECURE 7
-/*----- Default Value for TCP_WND: 2144 ---*/
+/*----- Default Value for TCP_WND: 5840 ---*/
 #define TCP_WND 2920
 /*----- Default Value for TCP_QUEUE_OOSEQ: 1 ---*/
 #define TCP_QUEUE_OOSEQ 0
 /*----- Default Value for TCP_MSS: 536 ---*/
 #define TCP_MSS 1460
-/*----- Default Value for TCP_SND_BUF: 1072 ---*/
+/*----- Default Value for TCP_SND_BUF: 2920 ---*/
 #define TCP_SND_BUF 5840
-/*----- Default Value for TCP_SND_QUEUELEN: 9 ---*/
-#define TCP_SND_QUEUELEN 17
-/*----- Default Value for TCP_SNDLOWAT: 1071 ---*/
-#define TCP_SNDLOWAT 2921
-/*----- Default Value for TCP_SNDQUEUELOWAT: 5 ---*/
-#define TCP_SNDQUEUELOWAT 9
-/*----- Default Value for TCP_WND_UPDATE_THRESHOLD: 536 ---*/
-#define TCP_WND_UPDATE_THRESHOLD 730
 /*----- Value in opt.h for TCPIP_THREAD_STACKSIZE: 0 -----*/
 #define TCPIP_THREAD_STACKSIZE 1024
 /*----- Value in opt.h for TCPIP_THREAD_PRIO: 1 -----*/

@@ -52,6 +52,7 @@
 #define __MAIN_H__
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32f7xx_hal.h"
 
 /* USER CODE BEGIN Includes */
 

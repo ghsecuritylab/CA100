@@ -84,12 +84,12 @@ void tcpecho_thread(void *arg)
 							if(data_len > TCP_SERVER_RX_BUFSIZE) 
 								break;  
 					}
-					taskEXIT_CRITICAL();  //open interrupt
-					data_len=0;  //?????data_len????    
-					printf("%s\r\n",tcp_server_recvbuf);  //????????????
+					taskEXIT_CRITICAL();  //
+					data_len=0;  //    
+					printf("%s\r\n",tcp_server_recvbuf);  //
 					netbuf_delete(recvbuf);
 				}
-				else if(recv_err == ERR_CLSD)  //????
+				else if(recv_err == ERR_CLSD)  //
 				{
 						netconn_close(newconn);
 						netconn_delete(newconn);

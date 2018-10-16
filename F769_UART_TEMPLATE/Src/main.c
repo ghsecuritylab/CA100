@@ -54,6 +54,7 @@
 #include "lwip.h"
 #include "usart.h"
 #include "gpio.h"
+#include "fmc.h"
 
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
@@ -110,6 +111,7 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART1_UART_Init();
+  MX_FMC_Init();
   /* USER CODE BEGIN 2 */
 	printf("UART OK!\r\n");
   /* USER CODE END 2 */
