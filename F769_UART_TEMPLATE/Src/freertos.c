@@ -53,6 +53,8 @@
 
 /* USER CODE BEGIN Includes */     
 #include "applicationTask.h"
+#include "Mem_SDRam.h"
+#include "Mem_NorFlash.h"
 
 /* USER CODE END Includes */
 
@@ -79,7 +81,7 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
-       
+	BSP_SDRAM_Init();
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
