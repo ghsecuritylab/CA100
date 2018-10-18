@@ -12,7 +12,7 @@
 #include "api.h"
 
 #include <string.h> 
-void vTaskSocket(void const *argument);
+
 void tcpecho_thread(void *arg);
 void creatOsTask(void);
 
